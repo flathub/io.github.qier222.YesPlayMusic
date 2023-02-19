@@ -3,6 +3,7 @@
   <id>io.github.qier222.YesPlayMusic</id>
   <metadata_license>CC0-1.0</metadata_license>
   <project_license>MIT</project_license>
+  <developer_name>qier222</developer_name>
   <name>YesPlayMusic</name>
   <summary>A High Appearance Third-Party Netease CloudMusic Player</summary>
   <summary xml:lang="zh_CN">高颜值的第三方网易云音乐播放器</summary>
