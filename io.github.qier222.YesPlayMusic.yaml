@@ -4,7 +4,6 @@ runtime-version: '22.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
 base-version: '22.08'
-separate-locales: false
 rename-icon: yesplaymusic
 rename-desktop-file: yesplaymusic.desktop
 command: yesplaymusic
@@ -34,6 +33,15 @@ modules:
       - install -Dm644 io.github.qier222.YesPlayMusic.metainfo.xml -t /app/share/metainfo
       - install -Dm755 yesplaymusic.sh /app/bin/yesplaymusic
 
+      # To allow separate locales
+      # https://searchfox.org/mozilla-central/rev/8a4f55bc09ffc5c25dcb4586c51ae4a9fee77b4c/taskcluster/docker/firefox-flatpak/runme.sh#131-133
+      - |
+        for lang in ${FLATPAK_DEST}/YesPlayMusic/locales/*.pak
+        do
+          locale="$(basename -s .pak $lang)"
+          install -Dm644 -t "${FLATPAK_DEST}/share/runtime/locale/${locale%%-*}/" "$lang"
+          ln -sf "${FLATPAK_DEST}/share/runtime/locale/${locale%%-*}/$(basename $lang)" "${FLATPAK_DEST}/YesPlayMusic/locales/$(basename $lang)"
+        done
     sources:
       - type: file
         dest-filename: yesplaymusic.deb
