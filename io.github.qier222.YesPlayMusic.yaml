@@ -23,15 +23,9 @@ modules:
     build-options:
       no-debuginfo: true
     build-commands:
-      - bsdtar --to-stdout -xf yesplaymusic.deb data.* | bsdtar -xf -
-      - cp -a opt/YesPlayMusic $FLATPAK_DEST/
-      - rm -Rf usr/share/icons/hicolor/1024x1024
-      - cp -a usr/share $FLATPAK_DEST/
-      - desktop-file-edit --set-key="Exec" --set-value="yesplaymusic %U" $FLATPAK_DEST/share/applications/*.desktop
-      - desktop-file-edit --set-key="Categories" --set-value="AudioVideo" $FLATPAK_DEST/share/applications/*.desktop
-      - install -Dm644 io.github.qier222.YesPlayMusic.metainfo.xml -t /app/share/metainfo
-      - install -Dm755 yesplaymusic.sh /app/bin/yesplaymusic
-
+      - install -Dm644 io.github.qier222.YesPlayMusic.metainfo.xml -t $FLATPAK_DEST/share/metainfo
+      - install -Dm755 yesplaymusic.sh $FLATPAK_DEST/bin/yesplaymusic
+      - install apply_extra $FLATPAK_DEST/bin
       # To allow separate locales
       # https://searchfox.org/mozilla-central/rev/8a4f55bc09ffc5c25dcb4586c51ae4a9fee77b4c/taskcluster/docker/firefox-flatpak/runme.sh#131-133
       - |
@@ -76,3 +70,13 @@ modules:
         commands:
           - export TMPDIR=$XDG_RUNTIME_DIR/app/$FLATPAK_ID
           - exec zypak-wrapper.sh /app/YesPlayMusic/yesplaymusic "$@"
+          
+      - type: script
+        dest-filename: apply_extra
+        commands:
+          - bsdtar --to-stdout -xf yesplaymusic.deb data.* | bsdtar -xf -
+          - mv opt/YesPlayMusic .
+          - rm -Rf usr/share/icons/hicolor/1024x1024
+          - mv usr/share .
+          - desktop-file-edit --set-key="Exec" --set-value="yesplaymusic %U" ./share/applications/*.desktop
+          - desktop-file-edit --set-key="Categories" --set-value="AudioVideo" ./share/applications/*.desktop
