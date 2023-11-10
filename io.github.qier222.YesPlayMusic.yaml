@@ -4,9 +4,8 @@ runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
 base-version: '23.08'
-rename-icon: yesplaymusic
-rename-desktop-file: yesplaymusic.desktop
 command: yesplaymusic
+separate-locales: false
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -87,6 +86,6 @@ modules:
           - bsdtar --to-stdout -xf yesplaymusic.deb data.* | bsdtar -xf -
           - mv opt/YesPlayMusic .
           - rm -Rf usr/share/icons/hicolor/1024x1024
+          - desktop-file-edit --set-key="Exec" --set-value="yesplaymusic %U" usr/share/applications/*.desktop
+          - desktop-file-edit --set-key="Categories" --set-value="AudioVideo" usr/share/applications/*.desktop
           - mv usr/share .
-          - desktop-file-edit --set-key="Exec" --set-value="yesplaymusic %U" ./share/applications/*.desktop
-          - desktop-file-edit --set-key="Categories" --set-value="AudioVideo" ./share/applications/*.desktop
