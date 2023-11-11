@@ -88,4 +88,4 @@ modules:
           - rm -Rf usr/share/icons/hicolor/1024x1024
           - desktop-file-edit --set-key="Exec" --set-value="yesplaymusic %U" usr/share/applications/*.desktop
           - desktop-file-edit --set-key="Categories" --set-value="AudioVideo" usr/share/applications/*.desktop
-          - mv usr/share .
+          - mv usr/share ../
