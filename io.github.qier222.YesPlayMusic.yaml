@@ -4,9 +4,8 @@ runtime-version: '23.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
 base-version: '23.08'
-rename-icon: yesplaymusic
-rename-desktop-file: yesplaymusic.desktop
 command: yesplaymusic
+separate-locales: false
 finish-args:
   - --share=ipc
   - --socket=x11
@@ -42,25 +41,22 @@ modules:
     build-options:
       no-debuginfo: true
     build-commands:
-      - bsdtar --to-stdout -xf yesplaymusic.deb data.* | bsdtar -xf -
-      - cp -a opt/YesPlayMusic $FLATPAK_DEST/
-      - rm -Rf usr/share/icons/hicolor/1024x1024
-      - cp -a usr/share $FLATPAK_DEST/
-      - desktop-file-edit --set-key="Exec" --set-value="yesplaymusic %U" $FLATPAK_DEST/share/applications/*.desktop
-      - desktop-file-edit --set-key="Categories" --set-value="AudioVideo" $FLATPAK_DEST/share/applications/*.desktop
+      - desktop-file-edit --set-key="Exec" --set-value="yesplaymusic %U" /app/share/applications/*.desktop
+      - desktop-file-edit --set-key="Categories" --set-value="AudioVideo" /app/share/applications/*.desktop
       - install -Dm644 io.github.qier222.YesPlayMusic.metainfo.xml -t /app/share/metainfo
+      - install -Dm755 apply_extra /app/bin/apply_extra
       - install -Dm755 yesplaymusic.sh /app/bin/yesplaymusic
-
-      # To allow separate locales
-      # https://searchfox.org/mozilla-central/rev/8a4f55bc09ffc5c25dcb4586c51ae4a9fee77b4c/taskcluster/docker/firefox-flatpak/runme.sh#131-133
-      - |
-        for lang in ${FLATPAK_DEST}/YesPlayMusic/locales/*.pak
-        do
-          locale="$(basename -s .pak $lang)"
-          install -Dm644 -t "${FLATPAK_DEST}/share/runtime/locale/${locale%%-*}/" "$lang"
-          ln -sf "${FLATPAK_DEST}/share/runtime/locale/${locale%%-*}/$(basename $lang)" "${FLATPAK_DEST}/YesPlayMusic/locales/$(basename $lang)"
-        done
     sources:
+      - type: script
+        commands:
+          - bsdtar --to-stdout -xf qqmusic_amd64.deb data.* | bsdtar -xf -
+          - mkdir -p /app/share/applications
+          - mkdir -p /app/share/icons/hicolor/512x512/apps
+          - mv opt/YesPlayMusic .
+          - mv usr/share/applications/yesplaymusic.desktop /app/share/applications/io.github.qier222.YesPlayMusic.desktop
+          - mv usr/share/icons/hicolor/512x512/apps/yesplaymusic.png /app/share/icons/hicolor/512x512/apps/io.github.qier222.YesPlayMusic.png
+          - rm -rf opt usr control.tar.gz data.tar.xz debian-binary qqmusic_amd64.deb
+        dest-filename: apply_extra
       - type: file
         dest-filename: yesplaymusic.deb
         only-arches:
@@ -91,7 +87,7 @@ modules:
         path: io.github.qier222.YesPlayMusic.metainfo.xml
 
       - type: script
-        dest-filename: yesplaymusic.sh
+        dest-filename: yesplaymusic
         commands:
           - export TMPDIR=$XDG_RUNTIME_DIR/app/$FLATPAK_ID
-          - exec zypak-wrapper.sh /app/YesPlayMusic/yesplaymusic "$@"
+          - exec zypak-wrapper.sh /app/extra/YesPlayMusic/yesplaymusic "$@"
