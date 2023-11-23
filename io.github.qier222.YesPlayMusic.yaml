@@ -53,7 +53,7 @@ modules:
           - mv opt/YesPlayMusic .
           - rm -rf opt usr yesplaymusic.deb
         dest-filename: apply_extra
-      - type: file
+      - type: extra-data
         dest-filename: yesplaymusic.deb
         only-arches:
           - aarch64
@@ -65,7 +65,7 @@ modules:
           version-query: .tag_name | sub("^v"; "")
           url-query: '"https://github.com/qier222/YesPlayMusic/releases/download/v"
             + $version + "/yesplaymusic_" + $version + "_arm64.deb"'
-      - type: file
+      - type: extra-data
         dest-filename: yesplaymusic.deb
         only-arches:
           - x86_64
