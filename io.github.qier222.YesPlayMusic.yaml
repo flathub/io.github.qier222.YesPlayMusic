@@ -42,20 +42,16 @@ modules:
       no-debuginfo: true
     build-commands:
       - install -Dm644 io.github.qier222.YesPlayMusic.metainfo.xml -t /app/share/metainfo
+      - install -Dm644 io.github.qier222.YesPlayMusic.desktop -t /app/share/applications
+      - install -Dm644 io.github.qier222.YesPlayMusic.png -t /app/share/icons/hicolor/512x512/apps
       - install -Dm755 apply_extra /app/bin/apply_extra
       - install -Dm755 yesplaymusic /app/bin/yesplaymusic
     sources:
       - type: script
         commands:
-          - bsdtar --to-stdout -xf qqmusic_amd64.deb data.* | bsdtar -xf -
-          - desktop-file-edit --set-key="Exec" --set-value="yesplaymusic %U" usr/share/applications/yesplaymusic.desktop
-          - desktop-file-edit --set-key="Categories" --set-value="AudioVideo" usr/share/applications/yesplaymusic.desktop
-          - mkdir -p /app/share/applications
-          - mkdir -p /app/share/icons/hicolor/512x512/apps
+          - bsdtar --to-stdout -xf yesplaymusic.deb data.* | bsdtar -xf -
           - mv opt/YesPlayMusic .
-          - mv usr/share/applications/yesplaymusic.desktop /app/share/applications/io.github.qier222.YesPlayMusic.desktop
-          - mv usr/share/icons/hicolor/512x512/apps/yesplaymusic.png /app/share/icons/hicolor/512x512/apps/io.github.qier222.YesPlayMusic.png
-          - rm -rf opt usr control.tar.gz data.tar.xz debian-binary qqmusic_amd64.deb
+          - rm -rf opt usr yesplaymusic.deb
         dest-filename: apply_extra
       - type: file
         dest-filename: yesplaymusic.deb
@@ -85,6 +81,12 @@ modules:
 
       - type: file
         path: io.github.qier222.YesPlayMusic.metainfo.xml
+
+      - type: file
+        path: io.github.qier222.YesPlayMusic.desktop
+
+      - type: file
+        path: io.github.qier222.YesPlayMusic.png
 
       - type: script
         dest-filename: yesplaymusic
