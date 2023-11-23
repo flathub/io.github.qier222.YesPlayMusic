@@ -43,7 +43,7 @@ modules:
     build-commands:
       - install -Dm644 io.github.qier222.YesPlayMusic.metainfo.xml -t /app/share/metainfo
       - install -Dm755 apply_extra /app/bin/apply_extra
-      - install -Dm755 yesplaymusic.sh /app/bin/yesplaymusic
+      - install -Dm755 yesplaymusic /app/bin/yesplaymusic
     sources:
       - type: script
         commands:
