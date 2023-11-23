@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=YesPlayMusic
+Exec=yesplaymusic %U
+Terminal=false
+Type=Application
+Icon=io.github.qier222.YesPlayMusic
+StartupWMClass=YesPlayMusic
+Comment=A third party music player for Netease Music
+Categories=Music;
