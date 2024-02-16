@@ -85,4 +85,4 @@ modules:
         dest-filename: yesplaymusic.sh
         commands:
           - export TMPDIR=$XDG_RUNTIME_DIR/app/$FLATPAK_ID
-          - exec zypak-wrapper.sh /app/YesPlayMusic/yesplaymusic "$@"
+          - exec zypak-wrapper /app/YesPlayMusic/yesplaymusic "$@"
