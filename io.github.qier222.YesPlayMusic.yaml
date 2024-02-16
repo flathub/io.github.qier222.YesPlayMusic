@@ -17,6 +17,15 @@ finish-args:
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.kde.StatusNotifierWatcher
   - --own-name=org.mpris.MediaPlayer2.yesplaymusic
+cleanup:
+  - '*.a'
+  - '*.la'
+  - /include
+  - /lib/cmake
+  - /lib/pkgconfig
+  - /man
+  - /share/man
+  - /share/gtk-doc
 
 modules:
   - name: yt-dlp
@@ -44,7 +53,8 @@ modules:
     build-commands:
       - bsdtar --to-stdout -xf yesplaymusic.deb data.* | bsdtar -xf -
       - cp -a opt/YesPlayMusic $FLATPAK_DEST/
-      - rm -Rf usr/share/icons/hicolor/1024x1024
+      - rm -r usr/share/doc
+      - rm -r usr/share/icons/hicolor/1024x1024
       - cp -a usr/share $FLATPAK_DEST/
       - desktop-file-edit --set-key="Exec" --set-value="yesplaymusic %U" $FLATPAK_DEST/share/applications/*.desktop
       - desktop-file-edit --set-key="Categories" --set-value="AudioVideo" $FLATPAK_DEST/share/applications/*.desktop
