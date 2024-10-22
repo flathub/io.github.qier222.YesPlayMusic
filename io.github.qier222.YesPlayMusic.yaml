@@ -65,25 +65,25 @@ modules:
         dest-filename: yesplaymusic.deb
         only-arches:
           - aarch64
-        url: https://github.com/qier222/YesPlayMusic/releases/download/v0.4.8-2/yesplaymusic_0.4.8_arm64.deb
-        sha256: 3cfd1aa726d2391aa578e068825760215d6d619a9aa3c919e3be26b80103a5dd
+        url: https://github.com/stark81/my_yesplaymusic/releases/download/v0.4.17/yesplaymusic_0.4.17_arm64.deb
+        sha256: a396618bc8126fd92a7d5ea4117e6114c77eda15f39a7b374bb5dfb531147590
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/qier222/YesPlayMusic/releases/latest
+          url: https://api.github.com/repos/stark81/my_yesplaymusic/releases/latest
           version-query: .tag_name | sub("^v"; "")
-          url-query: '"https://github.com/qier222/YesPlayMusic/releases/download/v"
+          url-query: '"https://github.com/stark81/my_yesplaymusic/releases/download/v"
             + $version + "/yesplaymusic_" + $version + "_arm64.deb"'
 
       - type: file
         dest-filename: yesplaymusic.deb
         only-arches:
           - x86_64
-        url: https://github.com/qier222/YesPlayMusic/releases/download/v0.4.8-2/yesplaymusic_0.4.8_amd64.deb
-        sha256: 8935a2fad64651053b27599c98c76559748aa581b2e263007aaf4237d7e19d9f
+        url: https://github.com/stark81/my_yesplaymusic/releases/download/v0.4.17/yesplaymusic_0.4.17_amd64.deb
+        sha256: 4af96a1501b7394ae9a5be821c55b20cc53086b9359227b1279a99c2177b65b8
         x-checker-data:
           is-main-source: true
           type: json
-          url: https://api.github.com/repos/qier222/YesPlayMusic/releases/latest
+          url: https://api.github.com/repos/stark81/my_yesplaymusic/releases/latest
           version-query: .tag_name | sub("^v"; "")
           url-query: '"https://github.com/qier222/YesPlayMusic/releases/download/v"
             + $version + "/yesplaymusic_" + $version + "_amd64.deb"'
