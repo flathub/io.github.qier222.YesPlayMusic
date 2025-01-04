@@ -16,8 +16,8 @@
     <p>A High Appearance Third-Party Netease CloudMusic Player. Support many convenient features.</p>
     <p xml:lang="zh_CN">高颜值的第三方网易云音乐播放器，支持各种各样的方便的特性</p>
   </description>
-  <url type="homepage">https://github.com/qier222/YesPlayMusic</url>
-  <url type="bugtracker">https://github.com/qier222/YesPlayMusic/issues</url>
+  <url type="homepage">https://github.com/stark81/my_yesplaymusic</url>
+  <url type="bugtracker">https://github.com/stark81/my_yesplaymusic/issues</url>
   <screenshots>
     <screenshot type="default">
       <caption>YesPlayMusic's Library Page</caption>
