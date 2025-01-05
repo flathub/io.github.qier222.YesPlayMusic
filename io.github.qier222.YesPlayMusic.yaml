@@ -80,8 +80,8 @@ modules:
         dest-filename: yesplaymusic.deb
         only-arches:
           - x86_64
-        url: https://github.com/stark81/my_yesplaymusic/releases/download/v0.4.18/yesplaymusic_0.4.18_amd64.deb
-        sha256: eb82128dd7061c5e95a8b86b9aa79fe49ba25ef09a3be5f5d0b7d5d249ae35ff
+        url: https://github.com/stark81/my_yesplaymusic/releases/download/v0.4.19/yesplaymusic_0.4.19_amd64.deb
+        sha256: e1b11ef26e8a8c42080bf96f6e7cf4b27e3250e568f07549b20335521e06269a
         x-checker-data:
           is-main-source: true
           type: json
