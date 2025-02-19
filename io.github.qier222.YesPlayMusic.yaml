@@ -37,14 +37,13 @@ modules:
     post-install:
       - install yt-dlp /app/bin
     sources:
-      - type: archive
-        url: https://github.com/yt-dlp/yt-dlp/releases/download/2025.02.19/yt-dlp.tar.gz
-        sha256: 28a8c33e4c32bd12e16601180b9f3a43fdc2896ad5467bc6e5a9f1fa6c280e28
+      - type: git
+        url: https://github.com/yt-dlp/yt-dlp.git
+        tag: 2025.02.19
+        commit: 9c3e8b16967cb6582712b6b7e4c107631d3873d0
         x-checker-data:
-          type: json
-          url: https://api.github.com/repos/yt-dlp/yt-dlp/releases/latest
-          version-query: .tag_name
-          url-query: .assets[] | select(.name=="yt-dlp.tar.gz") | .browser_download_url
+          type: git
+          tag-pattern: ^v([\d.]+)$
 
   - name: yesplaymusic
     buildsystem: simple
