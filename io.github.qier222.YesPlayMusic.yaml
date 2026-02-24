@@ -39,8 +39,8 @@ modules:
     sources:
       - type: git
         url: https://github.com/yt-dlp/yt-dlp.git
-        tag: 2026.02.04
-        commit: bb3af7e6d5373c1a9c11bd5db9a6ebbbdfe55a98
+        tag: 2026.02.21
+        commit: e2a9cc7d137c88843e064bc9ea11cdca5cd4c82a
         x-checker-data:
           type: git
           tag-pattern: ^(\d{4}\.\d{2}\.\d{2})$
