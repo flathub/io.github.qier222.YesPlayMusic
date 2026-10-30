@@ -1,9 +1,9 @@
 app-id: io.github.qier222.YesPlayMusic
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: '25.08'
+base-version: '26.08'
 separate-locales: false
 rename-icon: yesplaymusic
 rename-desktop-file: yesplaymusic.desktop
@@ -64,11 +64,11 @@ modules:
         dest-filename: yesplaymusic.deb
         only-arches:
           - aarch64
-        url: https://github.com/stark81/my_yesplaymusic/releases/download/v0.4.20/yesplaymusic_0.4.20_arm64.deb
+        url: https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/yesplaymusic_0.4.11_arm64.deb
         sha256: 00e50275dbda1858b9a0f286817b9e210bdf0d02ce3b190a2156a3f6722ea003
         x-checker-data:
           type: json
-          url: https://api.github.com/repos/stark81/my_yesplaymusic/releases/latest
+          url: https://api.github.com/repos/qier222/YesPlayMusic/releases/latest
           version-query: .tag_name | sub("^v"; "")
           url-query: >-
             .assets[] | select(.name | test("yesplaymusic_" + $version + "_arm64.deb"))
@@ -79,12 +79,12 @@ modules:
         dest-filename: yesplaymusic.deb
         only-arches:
           - x86_64
-        url: https://github.com/stark81/my_yesplaymusic/releases/download/v0.4.20/yesplaymusic_0.4.20_amd64.deb
+        url: https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/yesplaymusic_0.4.11_amd64.deb
         sha256: 7e02adb2168949de0c86b547202575fda7faf2431f8669f6b07fe8919d1dada6
         x-checker-data:
           is-main-source: true
           type: json
-          url: https://api.github.com/repos/stark81/my_yesplaymusic/releases/latest
+          url: https://api.github.com/repos/qier222/YesPlayMusic/releases/latest
           version-query: .tag_name | sub("^v"; "")
           url-query: >-
             .assets[] | select(.name | test("yesplaymusic_" + $version + "_amd64.deb"))
