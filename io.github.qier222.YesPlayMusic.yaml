@@ -65,7 +65,7 @@ modules:
         only-arches:
           - aarch64
         url: https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/yesplaymusic_0.4.11_arm64.deb
-        sha256: 00e50275dbda1858b9a0f286817b9e210bdf0d02ce3b190a2156a3f6722ea003
+        sha256: e956e2fa8fa2ecc12441e3718fab4d08db3b33efbdf95a475d00fe8cd852ed42
         x-checker-data:
           type: json
           url: https://api.github.com/repos/qier222/YesPlayMusic/releases/latest
@@ -80,7 +80,7 @@ modules:
         only-arches:
           - x86_64
         url: https://github.com/qier222/YesPlayMusic/releases/download/v0.4.11/yesplaymusic_0.4.11_amd64.deb
-        sha256: 7e02adb2168949de0c86b547202575fda7faf2431f8669f6b07fe8919d1dada6
+        sha256: 17a39a83ba5d799cbd517c2c182994cdb9b254cfba92fd10dbfb27cdcf421714
         x-checker-data:
           is-main-source: true
           type: json
